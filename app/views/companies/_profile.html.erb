@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%= @company.name %> profile  id <%= @company.id %></b>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @company.category.name %>
+</p>
+
+<p><%= link_to 'Company Owners', company_owners_company_path(@company), remote: true %></p>
+
+<%#= render 'owners' %>
+
+<% unless @properties.blank? %>
+<p>
+  <b>Properties of <%= @company.name %></b>
+  <% @properties.each_with_index do |owner, index| %>
+  <div><%= index + 1 %><br><%= link_to owner.name, company_path(owner) %></div>
+  <div><%= owner.category.name %></div><br>
+  <% end %>
+</p>
+<% end %>
+
+<% unless @company.owner.blank? %>
+<p>
+  <b>Owner:</b>
+  <%= @company.owner.full_name %>
+</p>
+<% end %>
+<%= link_to 'details', @company %>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Media Owners</title>
+  <link href='http://fonts.googleapis.com/css?family=Playfair+Display+SC&subset=latin,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        Media<br> Owners
+      </div>
+      <nav>
+        <ul>
+          <li><%= link_to 'Home', root_path %></li>|
+          <li><%= link_to 'Companies', companies_path %></li>|
+          <li><%= link_to 'Owners', owners_path %></li>|
+          <li><a href="#nowhere">About project</a></li>|
+          <li><a href="#nowhere">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content">
+      <div class="left_side">
+        <%= yield %>
+      </div>
+      <div class="right_side">
+        Right Side
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<div class="panel">
+  <p>
+    <b><%= @owner.full_name %> profile</b>
+  </p>
+  <p>
+    <%= @owner.content %> profile
+  </p>
+  <p>
+    <b>Companies owned</b>
+    <% for company in @owner.companies %>
+    <div>
+      <b><%= link_to company.name, mini_profile_company_path(company), remote: true %></b>
+    </div>
+    <% end %>
+  </p>
+</div>

@@ -1,0 +1,79 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html{
+  body{
+    height: 100%;
+    margin: 0;
+    a{
+      text-decoration: none;
+      color: #336699;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+    input{border: 1px solid gray;}
+    .container{
+      width:980px;
+      min-height: 300px;
+      margin: 0 auto;
+      // border: 1px solid gray;
+      .header{
+        width: 100%;
+        background: url('nav_bar_bottom.gif') no-repeat bottom left;
+        padding-bottom: 12px;
+        .logo{
+          margin: 20px;
+          font-size: 24px;
+          font-family: 'Playfair Display SC', serif;
+          display: inline-block;
+        }
+        nav{
+          display: inline-block;
+          right: 0;
+          ul{
+            right: 0;
+            li{
+              display: inline-block;
+              margin-right: 10px;
+              a {
+                color: #336699;
+              }
+            }
+          }
+        }
+      }
+      .panel{
+        border-top: 1px solid #E0E0E0;
+        padding: 10px 8px 15px 0px;
+        clear: both;
+        overflow: hidden;
+      }
+      .left_side{
+        border-top: 1px solid #E0E0E0;
+        float: left;
+        width: 700px;
+        .profile_list{
+          .profile{
+            width: 200px;
+            display: inline-table;
+            .details{
+              min-height: 80px;
+              border-bottom: 1px solid gray;
+            }
+          }
+        }
+        .field{
+          margin: 20px 0;
+        }
+      }
+      .right_side{
+        border-top: 1px solid #E0E0E0;
+        float: left;
+        width: 270px;
+        min-height: 100px;
+        margin-left: 10px;
+      }
+    }
+  }
+}

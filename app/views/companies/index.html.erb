@@ -1,0 +1,23 @@
+<h1><!-- Companies --></h1>
+
+<div class="profile_list">
+  <% @companies.each do |company| %>
+  <div class="profile">
+    <div class="details">
+      <div><%= company.name %></div>
+      <div><%= company.category.name %></div>
+      <% unless company.owner.blank? %>
+      <div><%= company.owner.full_name %></div>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= link_to 'Details', company %>
+      <%= link_to 'Edit', edit_company_path(company) %>
+      <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<p><%= link_to 'New Company', new_company_path %></p>

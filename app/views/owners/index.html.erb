@@ -1,0 +1,4 @@
+<% for owner in @owners %>
+  <p><%= link_to owner.full_name, owner %></p>
+<% end %>
+<%= link_to 'Add Owner', new_owner_path  %>

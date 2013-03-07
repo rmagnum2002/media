@@ -1,0 +1,37 @@
+<%= form_for(@company) do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.collection_select :category_id, Category.find(:all), :id, :name, :prompt => "Select a Category" %>
+  </div>
+  <div class="field">
+    <%= f.label :owners %><br />
+    <%= f.text_field :owners %>
+  </div>
+    <div class="field">
+    <%= f.label :properties %><br />
+    <%= f.text_field :properties %>
+  </div>
+  <div class="field">
+    <%= f.label :owner_id %><br />
+    <%= f.collection_select :owner_id, Owner.find(:all), :id, :full_name, :prompt => "Select a Owner" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
