@@ -1,5 +1,7 @@
 class Owner < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :content
+  mount_uploader :avatar, AvatarUploader
+
+  attr_accessible :first_name, :last_name, :content, :avatar, :avatar_cache, :remove_avatar
   has_many :companies
 
   def full_name

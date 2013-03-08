@@ -3,13 +3,19 @@
 <div class="profile_list">
   <% @companies.each do |company| %>
   <div class="profile">
+    <%= link_to mini_profile_company_path(company), remote: true do %>
     <div class="details">
       <div><%= company.name %></div>
+      <div class="thumb">
+        <% if company.avatar? %>
+        <%= image_tag(company.avatar_url(:thumb)) %>
+        <% else %>
+        <%= image_tag 'no_pic.gif' %>
+        <% end %>
+      </div>
       <div><%= company.category.name %></div>
-      <% unless company.owner.blank? %>
-      <div><%= company.owner.full_name %></div>
-      <% end %>
     </div>
+    <% end %>
 
     <div class="actions">
       <%= link_to 'Details', company %>

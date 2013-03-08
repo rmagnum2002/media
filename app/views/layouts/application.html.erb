@@ -11,15 +11,27 @@
   <div class="container">
     <div class="header">
       <div class="logo">
-        Media<br> Owners
+        <%= link_to root_path do %>
+          Media<br> Owners
+        <% end %>
       </div>
       <nav>
         <ul>
           <li><%= link_to 'Home', root_path %></li>|
-          <li><%= link_to 'Companies', companies_path %></li>|
-          <li><%= link_to 'Owners', owners_path %></li>|
+          <li><%= link_to 'Blog' %></li>|
           <li><a href="#nowhere">About project</a></li>|
           <li><a href="#nowhere">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div>
+      <nav class="menu">
+        <ul>
+          <% for cat in all_categories %>
+            <li><%= link_to cat.name, category_path(cat.id) %></li>|
+          <% end %>
+          <li><%= link_to 'All Companies', companies_path %></li>|
+          <li><%= link_to 'Owners', owners_path %></li>
         </ul>
       </nav>
     </div>
@@ -28,9 +40,16 @@
         <%= yield %>
       </div>
       <div class="right_side">
-        Right Side
+        <div class="panel">
+          <% for comp in latest_updates %>
+            <div><%= link_to comp.name, mini_profile_company_path(comp), remote: true %></div>
+            <small>Updated at: <%= l comp.updated_at, format: :short %></small>
+            <br><br>
+          <% end %>
+        </div>
       </div>
     </div>
+    <div class="footer"></div>
   </div>
 </body>
 </html>

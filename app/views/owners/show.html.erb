@@ -1,10 +1,15 @@
 <div class="panel">
   <p>
-    <b><%= @owner.full_name %> profile</b>
+    <h2><%= @owner.full_name %></h2>
   </p>
-  <p>
-    <%= @owner.content %> profile
-  </p>
+  <div class="thumb profile">
+    <% if @owner.avatar? %>
+    <%= image_tag(@owner.avatar_url(:thumb)) %>
+    <% else %>
+    <%= image_tag 'no_pic.gif' %>
+    <% end %>
+  </div>
+  <span><%= @owner.content %></span>
   <p>
     <b>Companies owned</b>
     <% for company in @owner.companies %>
@@ -14,3 +19,5 @@
     <% end %>
   </p>
 </div>
+<%= link_to 'Edit', edit_owner_path(@owner) %> |
+<%= link_to 'Back', owners_path %>

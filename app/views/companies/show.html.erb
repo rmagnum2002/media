@@ -1,33 +1,28 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <b><%= @company.name %> profile</b>
+  <b><%= @company.name %></b>
+  <div><%= @company.category.name %></div>
 </p>
 
-<p>
-  <b>Category:</b>
-  <%= @company.category.name %>
-</p>
-
+<div class="thumb profile">
+  <% if @company.avatar? %>
+  <%= image_tag(@company.avatar_url(:thumb)) %>
+  <% else %>
+  <%= image_tag 'no-logo.png' %>
+  <% end %>
+</div>
+<span class="content"><%= @company.content %></span>
 <!-- <p><%#= link_to 'Company Owners', company_owners_company_path(@company), remote: true %></p> -->
-<p>Owners</p>
 <%= render 'companies/owner' %>
 
 <% unless @properties.blank? %>
-<p>
+<div class="panel">
   <b>Properties of <%= @company.name %></b>
-  <% @properties.each_with_index do |owner, index| %>
-  <div><%= index + 1 %><br><%= link_to owner.name, company_path(owner) %></div>
-  <div><%= owner.category.name %></div><br>
+  <% @properties.each do |owner| %>
+  <div><%= link_to owner.name, mini_profile_company_path(owner), remote: true %></div>
   <% end %>
-</p>
+</div>
 <% end %>
 
-<% unless @company.owner.blank? %>
-<p>
-  <b>Owner:</b>
-  <%= @company.owner.full_name %>
-</p>
-<% end %>
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

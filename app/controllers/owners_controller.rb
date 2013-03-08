@@ -21,6 +21,10 @@ class OwnersController < ApplicationController
     end
   end
 
+  def mini_profile
+    @owner = Owner.find(params[:id])
+  end
+
   def new
     @owner = Owner.new
 

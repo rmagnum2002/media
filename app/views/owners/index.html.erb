@@ -1,4 +1,29 @@
-<% for owner in @owners %>
-  <p><%= link_to owner.full_name, owner %></p>
-<% end %>
-<%= link_to 'Add Owner', new_owner_path  %>
+<h1><!-- Companies --></h1>
+
+<div class="profile_list">
+  <% @owners.each do |owner| %>
+  <div class="profile">
+    <%= link_to owner do %>
+    <div class="details">
+      <div><%= owner.full_name %></div>
+      <div class="thumb">
+        <% if owner.avatar? %>
+        <%= image_tag(owner.avatar_url(:thumb)) %>
+        <% else %>
+        <%= image_tag 'no_pic.gif' %>
+        <% end %>
+      </div>
+      <div><%#= owner.category.name %></div>
+    </div>
+    <% end %>
+
+    <div class="actions">
+      <%= link_to 'Details', owner %>
+      <%= link_to 'Edit', edit_owner_path(owner) %>
+      <%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<p><%= link_to 'New Owner', new_owner_path %></p>

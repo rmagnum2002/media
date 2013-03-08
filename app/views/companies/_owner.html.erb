@@ -1,17 +1,21 @@
+<% if @company.owner.blank? && @owners.blank? %>
 <div class="panel">
-  <% if @company.owner.blank? %>
-  <div>No data on owners yet</div>
+  <div><br>No data on owners yet</div>
   <%= link_to 'Can help Us? Press here!' %>
-  <% else %>
-  <%= link_to @company.owner.full_name, owner_path(@company.owner) %>
-  <% end %>
 </div>
+<% else %>
+<% unless @company.owner.blank? %>
+<div class="panel">
+  <b>Owners among individuals</b>
+  <div><%= link_to @company.owner.full_name, mini_profile_owner_path(@company.owner), remote: true %></div>
+</div>
+<% end %>
 <div class="panel">
   <% unless @owners.blank? %>
-  <h4>Owners among companies</h4>
-  <% @owners.each do |owner| %>
-  <div><br><%= link_to owner.name, mini_profile_company_path(owner), remote: true %></div>
-  <div><%= owner.category.name %></div>
-  <% end %>
+    <b>Owners among companies</b><br>
+    <% @owners.each do |owner| %>
+      <div><%= link_to owner.name, mini_profile_company_path(owner), remote: true %></div>
+    <% end %>
   <% end %>
 </div>
+<% end %>

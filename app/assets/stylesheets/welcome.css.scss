@@ -27,6 +27,8 @@ html{
           font-size: 24px;
           font-family: 'Playfair Display SC', serif;
           display: inline-block;
+          text-align: center;
+          a{text-decoration: none;color: #000;}
         }
         nav{
           display: inline-block;
@@ -36,6 +38,7 @@ html{
             li{
               display: inline-block;
               margin-right: 10px;
+              padding-left: 10px;
               a {
                 color: #336699;
               }
@@ -43,9 +46,28 @@ html{
           }
         }
       }
-      .panel{
+      nav.menu{
         border-top: 1px solid #E0E0E0;
-        padding: 10px 8px 15px 0px;
+        border-bottom: 1px solid #E0E0E0;
+        display: inline-block;
+        right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+        ul{
+          right: 0;
+          li{
+            display: inline-block;
+            margin-right: 10px;
+            padding-left: 10px;
+            a{
+              color: #336699;
+            }
+          }
+        }
+      }
+      .panel{
+        // border-top: 1px solid #E0E0E0;
+        padding: 10px 8px 15px 10px;
         clear: both;
         overflow: hidden;
       }
@@ -55,11 +77,14 @@ html{
         width: 700px;
         .profile_list{
           .profile{
-            width: 200px;
+            width: 150px;
             display: inline-table;
+            border: 1px solid gray;
+            margin: 5px;
+            text-align: center;
+            a{text-decoration: none;color: #000;}
             .details{
               min-height: 80px;
-              border-bottom: 1px solid gray;
             }
           }
         }
@@ -69,10 +94,32 @@ html{
       }
       .right_side{
         border-top: 1px solid #E0E0E0;
+        border-left: 1px solid #E0E0E0;
         float: left;
-        width: 270px;
+        width: 268px;
         min-height: 100px;
         margin-left: 10px;
+        .panel{
+          .content{
+            text-align: justify;
+          }
+        }
+      }
+      .thumb{
+        width:100px;
+        height:100px;
+        margin: auto;
+        img{width:100%;}
+      }
+      .thumb.profile{
+        margin: 20px;
+        float: left;
+      }
+      .footer{
+        clear: both;
+        min-height: 100px;
+        width: 100%;
+        border-top: 1px solid #E0E0E0;
       }
     }
   }

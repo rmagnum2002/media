@@ -1,0 +1,22 @@
+<div class="panel">
+<p>
+  <b><%= @owner.full_name %></b>
+</p>
+<p class="thumb profile">
+  <% if @owner.avatar? %>
+  <%= image_tag(@owner.avatar_url(:thumb)) %>
+  <% else %>
+  <%= image_tag 'no_pic.gif' %>
+  <% end %>
+</p>
+<span class="content"><%= truncate @owner.content, length: 350 %></span>
+<% if @owner.companies.present? %>
+<p>
+  <b>Properties of <%= @owner.full_name %></b>
+  <% @owner.companies.each do |comp| %>
+    <div><%= link_to comp.name, mini_profile_company_path(comp), remote: true %></div>
+  <% end %>
+</p>
+<% end %>
+<p><%= link_to 'More Details', @owner %></p>
+</div>

@@ -2,7 +2,12 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    if params[:category].present?
+      category = Category.find(params[:category])
+      @companies = category.companies
+    else
+      @companies = Company.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -49,6 +54,21 @@ class CompaniesController < ApplicationController
 
   def mini_profile
     @company = Company.find(params[:id])
+      if @company.owners.present?
+      owners = @company.owners.split(",").map { |s| s.to_i }
+      @owners = Company.find(owners)
+    else
+      @owners = []
+    end
+    if @company.properties.present?
+      properties = @company.properties.split(",").map { |s| s.to_i }
+      @properties = Company.find(properties)
+    else
+      @properties = []
+    end
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /companies/new

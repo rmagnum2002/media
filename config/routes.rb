@@ -1,5 +1,7 @@
 Media::Application.routes.draw do
 
+  get 'categories/:category', to: 'companies#index', as: :category
+
   resources :companies do
     member do
       get 'company_owners'
@@ -7,7 +9,11 @@ Media::Application.routes.draw do
     end
   end
 
-  resources :owners
+  resources :owners do
+    member do
+      get 'mini_profile/:id', to: 'owners#mini_profile', as: :mini_profile
+    end
+  end
 
 
   get "welcome/index"
